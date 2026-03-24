@@ -7,17 +7,26 @@ const CustomerForm = ({ setCustomers }) => {
   const [address, setAddress] = useState('');
 
   const submitEmployee = () => {
-    setCustomers(prev =>
-        // let prevCustomers = [];
-        // prev.forEach(i => prevCustomers.push(i));
-        [...prev].push({
+    setCustomers(prev => {
+        const prevCustomers = [...prev];
+         prevCustomers.push({
             name: name,
             email: email,
             phone: phone,
             address: address
-        })
-    );
+        });
+         return prevCustomers;
+    });
+      clearInputs();
   };
+
+  const clearInputs = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setAddress('');
+  };
+
   return (
     <div className="form">
       <input type="text" placeholder="Name" onChange={value => setName(value.target.value)} value={name} />
@@ -25,6 +34,7 @@ const CustomerForm = ({ setCustomers }) => {
       <input type="tel" placeholder="Phone" onChange={value => setPhone(value.target.value)} value={phone} />
       <input type="text" placeholder="Address" onChange={value => setAddress(value.target.value)} value={address} />
       <button onClick={() => submitEmployee()}>Add customer</button>
+      <button onClick={() => clearInputs()}>Clear</button>
     </div>
   )
 }

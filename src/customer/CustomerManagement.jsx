@@ -3,7 +3,7 @@ import CustomerForm from './CustomerForm';
 import CustomerList from './CustomerList';
 
 const CustomerManagement = () => {
-  var [customers, setCustomers] = useState([]);
+  const [customers, setCustomers] = useState([]);
   return (
     <>
       <CustomerForm setCustomers={setCustomers} />
