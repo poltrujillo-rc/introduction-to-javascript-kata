@@ -7,15 +7,16 @@ const CustomerForm = ({ setCustomers }) => {
   const [address, setAddress] = useState('');
 
   const submitEmployee = () => {
-    setCustomers(prev => {
-      prev.push({
-        name: name,
-        email: email,
-        phone: phone,
-        address: address
-      });
-      return prev;
-    });
+    setCustomers(prev =>
+        // let prevCustomers = [];
+        // prev.forEach(i => prevCustomers.push(i));
+        [...prev].push({
+            name: name,
+            email: email,
+            phone: phone,
+            address: address
+        })
+    );
   };
   return (
     <div className="form">
